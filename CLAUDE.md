@@ -18,21 +18,22 @@ Records: `docs/decisions/`.
 
 Twelve project subagents live in `.claude/agents/`. Their skills live in `.claude/skills/`.
 Each agent preloads its skills with the `skills:` field. The roster is `docs/expert-roster.md`.
+Models, names and personalities: `docs/agent-brains.md`.
 
-| Agent | Owns |
-| --- | --- |
-| `orchestrator` | Runs the team. Plans, starts experts, routes handoffs, merges results. |
-| `meta-agent` | Agent and skill files. Tests and improves them. |
-| `software-architect` | System design, module boundaries, decision records. |
-| `opentdb-integration-expert` | Open Trivia DB client. |
-| `mobile-pwa-expert` | Manifest, icons, service worker, install UX. |
-| `security-expert` | Threat model, console auth, token scope, path rules. |
-| `agent-console-engineer` | Console functions: Claude chat, proposals, GitHub commits. |
-| `ui-designer-apple-liquid-glass` (Sable) | Visual design in an Apple Liquid Glass style. |
-| `ux-designer-apple-hig` (Wren) | Flows, interactions and text per Apple's HIG. |
-| `qa-engineer` | Tests and the release gate. |
-| `netlify-engineer` | Netlify config, env vars, Blobs, rate limits, deploys. |
-| `frontend-engineer` | Trivia screens, game state, scoring, results. |
+| Agent | Name | Model | Owns |
+| --- | --- | --- | --- |
+| `orchestrator` | Juno | opus | Runs the team. Plans, starts experts, routes handoffs, merges results. |
+| `meta-agent` | Iris | sonnet | Agent and skill files. Tests and improves them. |
+| `software-architect` | Atlas | opus | System design, module boundaries, decision records. |
+| `opentdb-integration-expert` | Pip | haiku | Open Trivia DB client. |
+| `mobile-pwa-expert` | Rowan | sonnet | Manifest, icons, service worker, install UX. |
+| `security-expert` | Hollis | opus | Threat model, console auth, token scope, path rules. |
+| `agent-console-engineer` | Orin | opus | Console functions: Claude chat, proposals, GitHub commits. |
+| `ui-designer-apple-liquid-glass` | Sable | sonnet | Visual design in an Apple Liquid Glass style. |
+| `ux-designer-apple-hig` | Wren | sonnet | Flows, interactions and text per Apple's HIG. |
+| `qa-engineer` | Tess | sonnet | Tests and the release gate. |
+| `netlify-engineer` | Nico | sonnet | Netlify config, env vars, Blobs, rate limits, deploys. |
+| `frontend-engineer` | Kit | sonnet | Trivia screens, game state, scoring, results. |
 
 ## How the team works
 

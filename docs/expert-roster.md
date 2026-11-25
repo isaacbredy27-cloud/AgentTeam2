@@ -14,24 +14,25 @@ Background research: see [README.md](README.md) and docs 01–05.
 
 Eleven roles are required. One more is added because the app needs it (see section 3).
 
-| # | Agent (slug) | Persona | Job, in one line | Model |
+| # | Agent (slug) | Name | Job, in one line | Model |
 | --- | --- | --- | --- | --- |
-| 1 | `orchestrator` | — | Runs the team: splits work, assigns it, tracks it and merges results. | opus |
-| 2 | `meta-agent` | — | Builds, tests and improves the other agent files in `.claude/agents`. | opus |
-| 3 | `software-architect` | — | Owns the system design, module boundaries and decision records. | opus |
-| 4 | `opentdb-integration-expert` | — | Builds the Open Trivia DB client: categories, 50 questions, tokens, rate limits. | sonnet |
-| 5 | `mobile-pwa-expert` | — | Makes the app installable and offline-ready on iPhone and Android. | sonnet |
-| 6 | `security-expert` | — | Guards secrets, the console login, the token scope and the path rules. | opus |
-| 7 | `agent-console-engineer` | — | Builds the console: Claude chat, proposals and approved GitHub commits in Functions. | opus |
+| 1 | `orchestrator` | Juno | Runs the team: splits work, assigns it, tracks it and merges results. | opus |
+| 2 | `meta-agent` | Iris | Builds, tests and improves the other agent files in `.claude/agents`. | sonnet |
+| 3 | `software-architect` | Atlas | Owns the system design, module boundaries and decision records. | opus |
+| 4 | `opentdb-integration-expert` | Pip | Builds the Open Trivia DB client: categories, 50 questions, tokens, rate limits. | haiku |
+| 5 | `mobile-pwa-expert` | Rowan | Makes the app installable and offline-ready on iPhone and Android. | sonnet |
+| 6 | `security-expert` | Hollis | Guards secrets, the console login, the token scope and the path rules. | opus |
+| 7 | `agent-console-engineer` | Orin | Builds the console: Claude chat, proposals and approved GitHub commits in Functions. | opus |
 | 8 | `ui-designer-apple-liquid-glass` | Sable | Designs the visual layer in an Apple Liquid Glass style. | sonnet |
 | 9 | `ux-designer-apple-hig` | Wren | Designs flows and interactions that follow Apple's Human Interface Guidelines. | sonnet |
-| 10 | `qa-engineer` | — | Writes and runs unit, function, end-to-end and accessibility tests. | sonnet |
-| 11 | `netlify-engineer` | — | Owns `netlify.toml`, functions config, env vars, Blobs, rate limits and deploys. | sonnet |
-| 12 | `frontend-engineer` | — | Builds the trivia screens, game state, scoring and results in TypeScript. | sonnet |
+| 10 | `qa-engineer` | Tess | Writes and runs unit, function, end-to-end and accessibility tests. | sonnet |
+| 11 | `netlify-engineer` | Nico | Owns `netlify.toml`, functions config, env vars, Blobs, rate limits and deploys. | sonnet |
+| 12 | `frontend-engineer` | Kit | Builds the trivia screens, game state, scoring and results in TypeScript. | sonnet |
 
 Model column: the `model` value for each agent file.
-`opus` maps to `claude-opus-5-5`, `sonnet` to `claude-sonnet-5-5` (doc 04, section 2).
-Opus goes to roles that judge risk or design. Sonnet goes to focused build roles.
+`opus` maps to `claude-opus-5-5`, `sonnet` to `claude-sonnet-5-5`, `haiku` to `claude-haiku-5-5` (doc 04, section 2).
+Opus goes to hard reasoning where mistakes are costly. Sonnet goes to everyday engineering and design.
+Haiku goes to small, well-defined jobs. Names, personalities and the reasons: [agent-brains.md](agent-brains.md).
 
 ## 2. Role details
 

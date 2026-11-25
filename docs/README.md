@@ -25,6 +25,7 @@ Research date: 2026-11-25. Each file lists the official sources it used.
 | 05 | [05-testing-accessibility.md](05-testing-accessibility.md) | Test layers, security tests, Playwright, WCAG 2.2 AA checklist |
 | — | [expert-roster.md](expert-roster.md) | The 12-agent team, job lines, shared skills and review owners |
 | — | [decisions/](decisions/README.md) | Decision records |
+| — | [agent-brains.md](agent-brains.md) | Each agent's model, name and personality |
 | — | [../knowledge/](../knowledge/README.md) | Per-agent reference notes and runnable worked examples |
 
 The team itself lives in `.claude/agents/` and `.claude/skills/`. See `CLAUDE.md` at the repo root.
