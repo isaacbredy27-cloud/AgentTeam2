@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Glass bar</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body { margin: 0; font-size: var(--font-body); color: var(--color-text); background: var(--color-bg); font-family: system-ui, sans-serif; }
+  .bar { position: fixed; inset: auto 12px 12px 12px; display: flex; gap: 8px; }
+  .bar button { min-height: var(--target-min); flex: 1; border-radius: var(--radius-inner); border: 0;
+    background: var(--color-accent); color: var(--color-on-accent); font: inherit; }
+  main { padding: 16px 16px 120px; }
+</style></head>
+<body>
+  <main><h1>Results</h1><p>You scored 37 out of 50.</p></main>
+  <nav class="bar glass" aria-label="Round actions">
+    <button type="button">Play Again</button>
+    <button type="button">New Topic</button>
+  </nav>
+</body>
+</html>

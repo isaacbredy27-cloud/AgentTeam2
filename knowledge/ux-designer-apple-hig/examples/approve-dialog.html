@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Approve proposal</title>
+<style>
+  body { font: 17px/1.4 system-ui, sans-serif; margin: 16px; color: #111318; background: #fff; }
+  button { min-height: 44px; padding: 0 16px; font: inherit; border-radius: 12px; border: 1px solid #4a5060; background: #fff; color: #111318; }
+  .primary { background: #1d4ed8; color: #fff; border-color: #1d4ed8; }
+  .actions { display: flex; gap: 12px; justify-content: flex-end; }
+  dialog { border-radius: 16px; border: 1px solid #c8ccd6; max-width: 26rem; }
+</style></head>
+<body>
+  <main>
+    <h1>Proposal P-123</h1>
+    <p>Fix typo on topic screen. 3 files.</p>
+    <button type="button" class="primary" id="approve">Approve</button>
+    <p id="result" role="status"></p>
+  </main>
+  <dialog id="confirm" aria-labelledby="confirm-title" aria-describedby="confirm-body">
+    <form method="dialog">
+      <h2 id="confirm-title">Commit 3 files to main?</h2>
+      <p id="confirm-body">This goes live on the next deploy.</p>
+      <div class="actions">
+        <button value="cancel">Cancel</button>
+        <button value="commit" class="primary" autofocus>Commit 3 Files</button>
+      </div>
+    </form>
+  </dialog>
+  <script>
+    const dialog = document.getElementById("confirm");
+    const opener = document.getElementById("approve");
+    opener.addEventListener("click", () => dialog.showModal());
+    dialog.addEventListener("close", () => {
+      document.getElementById("result").textContent =
+        dialog.returnValue === "commit" ? "Committing…" : "Not committed.";
+      opener.focus(); // return focus to where it started
+    });
+  </script>
+</body>
+</html>

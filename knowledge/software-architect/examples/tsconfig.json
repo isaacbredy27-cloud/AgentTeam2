@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "target": "es2022",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "noEmit": true,
+    "lib": ["es2022", "dom"],
+    "skipLibCheck": true
+  },
+  "files": ["module-contracts.ts"]
+}

@@ -1,0 +1,61 @@
+/* Design tokens. Every colour pair used for text is checked in contrast.test.ts. */
+:root {
+  --color-bg: #f2f4f8;
+  --color-surface: #ffffff;
+  --color-text: #111318;
+  --color-text-secondary: #4a5060;
+  --color-accent: #1d4ed8;
+  --color-on-accent: #ffffff;
+  --color-correct: #166534;
+  --color-wrong: #b91c1c;
+
+  --glass-fill: rgb(255 255 255 / 0.72);
+  --glass-border: rgb(255 255 255 / 0.6);
+  --glass-blur: 20px;
+  --glass-saturate: 180%;
+
+  --radius-outer: 24px;
+  --space-3: 12px;
+  --radius-inner: calc(var(--radius-outer) - var(--space-3)); /* concentric corners */
+
+  --font-body: 17px;
+  --target-min: 44px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0b0d12;
+    --color-surface: #161a22;
+    --color-text: #f2f4f8;
+    --color-text-secondary: #b4bccb;
+    --color-accent: #8ab4ff;
+    --color-on-accent: #0b0d12;
+    --color-correct: #4ade80;
+    --color-wrong: #f87171;
+    --glass-fill: rgb(22 26 34 / 0.72);
+    --glass-border: rgb(255 255 255 / 0.12);
+  }
+}
+
+.glass {
+  background: var(--glass-fill);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-outer);
+  padding: var(--space-3);
+}
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .glass {
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  }
+}
+
+/* Solid fallback when people ask for less transparency (not supported on iOS Safari). */
+@media (prefers-reduced-transparency: reduce) {
+  .glass { background: var(--color-surface); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

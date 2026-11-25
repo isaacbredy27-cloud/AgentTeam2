@@ -50,7 +50,7 @@ Tasks are independent when they touch different files and need nothing from each
 Dependent tasks run in order. Two agents never edit the same file at the same time.
 
 **Agents hand work to each other through the orchestrator.**
-Experts cannot start other agents. Their files set `disallowedTools: Agent`.
+Experts cannot start or message other agents. Their files set `disallowedTools: Agent, SendMessage`.
 Each expert ends its reply with a `## Handoff` section, one line per follow-up:
 `<agent-name>: <task and the context they need>`.
 The orchestrator reads every handoff and starts the next task with full context.
@@ -69,6 +69,20 @@ The review table is in `docs/expert-roster.md`, section 6.
   `package.json`, the lockfile, `.env*` or `public/sw.js`.
 - New servers, services or dependencies need a decision record and security review.
 - Write short, plain sentences in active voice.
+
+## Knowledge folders
+
+Each agent has its own reference library in `knowledge/<agent-name>/`:
+
+- `docs/`: notes taken from official documentation. Each note names its source link and read date.
+- `examples/`: two or three small worked examples that show what good looks like.
+
+Every agent file has a `## Before you answer` section. It tells the agent to read its whole folder first
+and to prefer it over memory. Run the code examples with:
+
+```bash
+cd knowledge && npm install && npm run verify
+```
 
 ## Docs map
 

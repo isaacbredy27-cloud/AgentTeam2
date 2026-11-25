@@ -8,7 +8,9 @@ description: "Open Trivia DB endpoints, parameters, categories, session tokens a
 No API key. Data is CC BY-SA 4.0. Show attribution in the app.
 
 ## Endpoints
-- Questions: `https://opentdb.com/api.php?amount=50&category=ID&type=multiple&encode=url3986&token=T`
+- Questions: `https://opentdb.com/api.php?amount=50&category=ID&encode=url3986&token=T`
+- No `type` filter. Counts from `api_count.php` include both question types,
+  so a type filter can keep returning code 1 after the fallback.
 - Categories: `https://opentdb.com/api_category.php`
 - Count: `https://opentdb.com/api_count.php?category=ID`
 - Token: `https://opentdb.com/api_token.php?command=request` / `command=reset&token=T`

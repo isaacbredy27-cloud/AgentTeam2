@@ -18,7 +18,7 @@ The category list below came from the live `api_category.php` endpoint on the sa
 
 | Purpose | URL |
 | --- | --- |
-| Questions | `https://opentdb.com/api.php?amount=50&category=9&type=multiple&encode=url3986` |
+| Questions | `https://opentdb.com/api.php?amount=50&category=9&encode=url3986` |
 | Category list | `https://opentdb.com/api_category.php` |
 | Count in one category | `https://opentdb.com/api_count.php?category=9` |
 | Global count | `https://opentdb.com/api_count_global.php` |
@@ -108,6 +108,10 @@ Recommended flow:
 5. Tell the user: "This topic has only N questions."
 
 Wait 5 seconds between API calls. Treat the count endpoint as rate limited too.
+
+Do not filter by `type`. The count covers multiple-choice and true/false questions together.
+A live check on 2026-11-25 showed category 30 (Science: Gadgets) has only 40 questions in total.
+With a type filter, the smaller retry can still return code 1.
 
 A token also lowers the pool over time. On code 4, reset the token and retry.
 
