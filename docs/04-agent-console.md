@@ -198,6 +198,8 @@ Buttons: **Approve**, **Reject**.
 
 ## 5. Approve: committing to GitHub
 
+Decisions 0003 and 0005: Approve commits straight to `main` with a fine-grained personal access token.
+
 On Approve, the function:
 
 1. Checks the session and a CSRF check (section 7).

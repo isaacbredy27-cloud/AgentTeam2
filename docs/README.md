@@ -24,6 +24,9 @@ Research date: 2026-11-25. Each file lists the official sources it used.
 | 04 | [04-agent-console.md](04-agent-console.md) | Agent list, chat via Claude API, propose and approve flow, security, long jobs |
 | 05 | [05-testing-accessibility.md](05-testing-accessibility.md) | Test layers, security tests, Playwright, WCAG 2.2 AA checklist |
 | — | [expert-roster.md](expert-roster.md) | The 12-agent team, job lines, shared skills and review owners |
+| — | [decisions/](decisions/README.md) | Decision records |
+
+The team itself lives in `.claude/agents/` and `.claude/skills/`. See `CLAUDE.md` at the repo root.
 
 ## Key decisions
 
@@ -54,12 +57,21 @@ Research date: 2026-11-25. Each file lists the official sources it used.
 | GitHub Contents API read, full support | files ≤ 1 MB | 04 |
 | PWA icon sizes (Chromium) | 192 px and 512 px | 02 |
 
+## Decisions taken (2026-11-25)
+
+Full records live in [decisions/](decisions/README.md).
+
+- **0001** Static PWA on Netlify plus Functions. No other servers.
+- **0002** No proxy for Open Trivia DB. The browser calls it directly.
+- **0003** Approve commits straight to `main`. No pull request.
+- **0004** Netlify Free plan for now.
+- **0005** Fine-grained personal access token for GitHub.
+
 ## Open questions for the team
 
 - Does Open Trivia DB send CORS headers? Check in the first spike (doc 01, section 9).
-  The research container could not reach opentdb.com directly. Data came via a fetch service.
+  With no proxy (decision 0002), a CORS failure goes back to the lead.
 - Final app name, colours and icons.
-- Which Netlify plan? It sets the number of rate-limit rules (2 on Free, 5 on Pro).
 - Should scores sync across devices? v1 keeps them on the device only.
 
 ## Suggested agent roles

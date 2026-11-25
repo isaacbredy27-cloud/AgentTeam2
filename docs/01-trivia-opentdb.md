@@ -163,8 +163,9 @@ The 5-second limit is **per IP**. This matters for where you call the API.
 - **Browser calls the API directly.** Each player uses their own IP. Limits rarely collide. This is the recommended default.
 - **A Netlify Function proxies the API.** All players share a few function IPs. They will hit code 5 often. Avoid this path for live play.
 
-Open question: confirm OpenTDB sends CORS headers. Many browser apps call it directly.
-Check this in the first spike. If CORS fails, use a function with a short cache in Netlify Blobs.
+Decision 0002: the browser calls Open Trivia DB directly. There is no proxy.
+Still confirm OpenTDB sends CORS headers in the first spike.
+If CORS fails, stop and ask the project lead. Do not add a proxy.
 
 Client rules:
 

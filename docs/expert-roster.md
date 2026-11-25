@@ -6,7 +6,7 @@ There are no other servers.
 
 This roster lists the agents needed to design, build, test and deploy the app.
 It also covers running the Agent Console.
-Each agent becomes one file in `.claude/agents/<slug>.md`.
+Each agent is a project subagent at `.claude/agents/<slug>.md`. How they work together: see `CLAUDE.md`.
 
 Background research: see [README.md](README.md) and docs 01–05.
 
@@ -174,6 +174,8 @@ Considered and left out:
 ## 4. Skills and who shares them
 
 Each skill lists every agent that needs it. **Lead** marks the owner.
+Each skill is a project skill at `.claude/skills/<skill folder>/SKILL.md`.
+Each agent preloads its skills through the `skills:` field in its agent file.
 
 Agent short names used below:
 ORC orchestrator · META meta-agent · ARCH software-architect · API opentdb-integration-expert ·
@@ -182,87 +184,87 @@ WREN ux-designer · QA qa-engineer · NET netlify-engineer · FE frontend-engine
 
 ### Team and process
 
-| Skill | Agents | Lead |
-| --- | --- | --- |
-| Planning, task breakdown and routing | ORC, ARCH | ORC |
-| Decision records and docs upkeep | ORC, ARCH, META | ARCH |
-| Code review | ARCH, SEC, QA, ACE, FE | ARCH |
-| Writing agent files (`.claude/agents` format, prompts, model choice) | META, ORC, ACE | META |
-| Evaluating and improving agents | META, ORC, QA | META |
+| Skill | Skill folder | Agents | Lead |
+| --- | --- | --- | --- |
+| Planning, task breakdown and routing | `team-planning-and-routing` | ORC, ARCH | ORC |
+| Decision records and docs upkeep | `decision-records-and-docs` | ORC, ARCH, META | ARCH |
+| Code review | `code-review-standards` | ARCH, SEC, QA, ACE, FE | ARCH |
+| Writing agent files (`.claude/agents` format, prompts, model choice) | `agent-authoring` | META, ORC, ACE | META |
+| Evaluating and improving agents | `agent-evaluation` | META, ORC, QA | META |
 
 ### Architecture and code
 
-| Skill | Agents | Lead |
-| --- | --- | --- |
-| System design: static site plus Functions | ARCH, NET, ACE, SEC | ARCH |
-| TypeScript | FE, API, PWA, ACE, NET, QA | FE |
-| Vite build and project tooling | FE, PWA, NET | FE |
-| HTML and CSS for mobile screens | FE, SABLE, PWA | FE |
-| Game logic: state, shuffle, scoring | FE, API, QA | FE |
+| Skill | Skill folder | Agents | Lead |
+| --- | --- | --- | --- |
+| System design: static site plus Functions | `static-plus-functions-architecture` | ARCH, NET, ACE, SEC | ARCH |
+| TypeScript | `typescript-standards` | FE, API, PWA, ACE, NET, QA | FE |
+| Vite build and project tooling | `vite-tooling` | FE, PWA, NET | FE |
+| HTML and CSS for mobile screens | `mobile-html-css` | FE, SABLE, PWA | FE |
+| Game logic: state, shuffle, scoring | `trivia-game-logic` | FE, API, QA | FE |
 
 ### Open Trivia DB
 
-| Skill | Agents | Lead |
-| --- | --- | --- |
-| Open Trivia DB API: categories, 50 questions, tokens, response codes | API, FE, QA | API |
-| Rate limits, retries and backoff | API, ACE, NET, SEC | API |
-| Safe text decoding and rendering | API, FE, SEC | API |
+| Skill | Skill folder | Agents | Lead |
+| --- | --- | --- | --- |
+| Open Trivia DB API: categories, 50 questions, tokens, response codes | `opentdb-api` | API, FE, QA | API |
+| Rate limits, retries and backoff | `rate-limits-and-retries` | API, ACE, NET, SEC | API |
+| Safe text decoding and rendering | `safe-text-rendering` | API, FE, SEC | API |
 
 ### PWA and mobile
 
-| Skill | Agents | Lead |
-| --- | --- | --- |
-| Web app manifest and installability | PWA, WREN, NET | PWA |
-| Service workers and caching | PWA, NET, QA | PWA |
-| iOS and Android platform behaviour | PWA, WREN, SABLE, QA | PWA |
-| Offline states and storage | PWA, FE, WREN | PWA |
+| Skill | Skill folder | Agents | Lead |
+| --- | --- | --- | --- |
+| Web app manifest and installability | `web-app-manifest` | PWA, WREN, NET | PWA |
+| Service workers and caching | `service-worker-caching` | PWA, NET, QA | PWA |
+| iOS and Android platform behaviour | `ios-android-platform-behaviour` | PWA, WREN, SABLE, QA | PWA |
+| Offline states and storage | `offline-and-storage` | PWA, FE, WREN | PWA |
 
 ### Design
 
-| Skill | Agents | Lead |
-| --- | --- | --- |
-| Apple Human Interface Guidelines and UX flows | WREN, SABLE, FE | WREN |
-| Liquid Glass visual style, design tokens, icons | SABLE, FE | SABLE |
-| Plain-language interface text | WREN, ORC | WREN |
-| Accessibility (WCAG 2.2 AA) | WREN, SABLE, FE, QA, ACE | WREN |
+| Skill | Skill folder | Agents | Lead |
+| --- | --- | --- | --- |
+| Apple Human Interface Guidelines and UX flows | `apple-hig-ux` | WREN, SABLE, FE | WREN |
+| Liquid Glass visual style, design tokens, icons | `liquid-glass-visual-design` | SABLE, FE | SABLE |
+| Plain-language interface text | `plain-language-ui-text` | WREN, ORC | WREN |
+| Accessibility (WCAG 2.2 AA) | `accessibility-wcag22` | WREN, SABLE, FE, QA, ACE | WREN |
 
 ### Agent Console, Claude and GitHub
 
-| Skill | Agents | Lead |
-| --- | --- | --- |
-| Claude API: Messages, models, tool use, streaming | ACE, META, ARCH, SEC | ACE |
-| GitHub REST API: contents, Git data, fine-grained tokens | ACE, SEC, NET | ACE |
-| Propose-and-approve flow and diff view | ACE, SEC, WREN, QA | ACE |
-| Long jobs: background functions, polling, idempotency | ACE, NET, ARCH | ACE |
+| Skill | Skill folder | Agents | Lead |
+| --- | --- | --- | --- |
+| Claude API: Messages, models, tool use, streaming | `claude-api-messages` | ACE, META, ARCH, SEC | ACE |
+| GitHub REST API: contents, Git data, fine-grained tokens | `github-commits-api` | ACE, SEC, NET | ACE |
+| Propose-and-approve flow and diff view | `propose-approve-flow` | ACE, SEC, WREN, QA | ACE |
+| Long jobs: background functions, polling, idempotency | `long-agent-jobs` | ACE, NET, ARCH | ACE |
 
 ### Netlify
 
-| Skill | Agents | Lead |
-| --- | --- | --- |
-| Netlify Functions: API, config, limits | NET, ACE, ARCH, SEC | NET |
-| Netlify Blobs | NET, ACE | NET |
-| Env vars, deploy contexts and secrets handling | NET, SEC, ACE | NET |
-| Headers, CSP and rate-limit rules | NET, SEC, PWA | NET |
-| Deploys, previews and rollback | NET, QA, ORC | NET |
+| Skill | Skill folder | Agents | Lead |
+| --- | --- | --- | --- |
+| Netlify Functions: API, config, limits | `netlify-functions` | NET, ACE, ARCH, SEC | NET |
+| Netlify Blobs | `netlify-blobs` | NET, ACE | NET |
+| Env vars, deploy contexts and secrets handling | `netlify-env-and-secrets` | NET, SEC, ACE | NET |
+| Headers, CSP and rate-limit rules | `netlify-headers-csp-rate-limits` | NET, SEC, PWA | NET |
+| Deploys, previews and rollback | `netlify-deploys-and-rollback` | NET, QA, ORC | NET |
 
 ### Security
 
-| Skill | Agents | Lead |
-| --- | --- | --- |
-| Threat modelling | SEC, ARCH, ACE | SEC |
-| Auth: password gate, sessions, CSRF | SEC, ACE, QA | SEC |
-| Path allow-list and deny-list | SEC, ACE, META, QA | SEC |
-| Prompt-injection defence | SEC, ACE, META | SEC |
-| Keeping secrets out of the browser | SEC, NET, ACE, FE | SEC |
+| Skill | Skill folder | Agents | Lead |
+| --- | --- | --- | --- |
+| Threat modelling | `threat-modelling` | SEC, ARCH, ACE | SEC |
+| Auth: password gate, sessions, CSRF | `console-auth-sessions-csrf` | SEC, ACE, QA | SEC |
+| Path allow-list and deny-list | `path-allowlist-rules` | SEC, ACE, META, QA | SEC |
+| Prompt-injection defence | `prompt-injection-defence` | SEC, ACE, META | SEC |
+| Keeping secrets out of the browser | `secrets-out-of-browser` | SEC, NET, ACE, FE | SEC |
 
 ### Testing
 
-| Skill | Agents | Lead |
-| --- | --- | --- |
-| Unit and function tests (Vitest, fakes for Claude, GitHub, Blobs) | QA, FE, API, ACE | QA |
-| End-to-end tests (Playwright on phone presets) | QA, FE, PWA | QA |
-| Automated and manual accessibility checks | QA, WREN, FE | QA |
-| Security tests | QA, SEC | QA |
+| Skill | Skill folder | Agents | Lead |
+| --- | --- | --- | --- |
+| Unit and function tests (Vitest, fakes for Claude, GitHub, Blobs) | `unit-and-function-testing` | QA, FE, API, ACE | QA |
+| End-to-end tests (Playwright on phone presets) | `e2e-playwright-testing` | QA, FE, PWA | QA |
+| Automated and manual accessibility checks | `accessibility-testing` | QA, WREN, FE | QA |
+| Security tests | `security-testing` | QA, SEC | QA |
 
 ## 5. Skill count per agent
 

@@ -220,7 +220,8 @@ export const config: Config = {
 - Rules per project: Free/Starter/Personal 2, Pro 5, Enterprise with HP Edge 100.
 - Function rate limits cannot be set in `netlify.toml`.
 
-With only 2 rules on low plans, spend them on `/api/login` and `/api/chat`.
+Decision 0004 keeps us on the Free plan, so we have 2 rules.
+Spend them on `/api/login` and `/api/chat`.
 Add a per-session budget in Blobs for everything else (doc 04).
 
 ## 10. Deploys
@@ -228,6 +229,7 @@ Add a per-session budget in Blobs for everything else (doc 04).
 - Link the GitHub repo to the Netlify site.
 - Every push to `main` triggers a production build and deploy.
 - So a commit made by the approve function **is** the redeploy trigger.
+- Decision 0003: Approve commits straight to `main`. No pull request step.
 - Each pull request gets a Deploy Preview.
 - Old deploys stay available for instant rollback.
 
