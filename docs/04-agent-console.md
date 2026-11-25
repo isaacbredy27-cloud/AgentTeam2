@@ -1,6 +1,11 @@
 # 04 · Agent Console: chat with agents, approve code changes
 
-Scope: a password-protected page in the deployed app. It lists every agent in `.claude/agents`.
+> **Update 2026-11-25:** decision 0006 replaces the password gate with Supabase Auth and a `super_admin` role.
+> Sections 1, 7 ("Password gate", "CSRF") and 9 ("Login screen") describe the old plan. The built design is in
+> [decisions/0006](decisions/0006-supabase-auth-for-agent-console.md) and [plans/security.md](plans/security.md).
+> Background jobs (section 8) are not built in v1; chat runs with low effort inside the 60-second limit.
+
+Scope: a sign-in-protected page in the deployed app. It lists every agent in `.claude/agents`.
 Users chat with any agent. Agents propose code changes. A change reaches GitHub only after the user clicks **Approve**.
 The commit triggers a Netlify redeploy.
 
@@ -279,7 +284,7 @@ Keep the lists in code under `netlify/functions/`. Agents cannot edit that folde
 
 ## 7. Security
 
-### Password gate
+### Password gate (superseded by decision 0006)
 
 - Store only a hash: `CONSOLE_PASSWORD_HASH` (scrypt from `node:crypto`, with salt).
 - Compare with `crypto.timingSafeEqual`.

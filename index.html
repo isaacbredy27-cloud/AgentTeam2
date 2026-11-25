@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Trivia 50</title>
+  <meta name="description" content="Pick a topic and answer up to 50 trivia questions.">
+  <meta name="theme-color" content="#1d4ed8">
+  <meta name="apple-mobile-web-app-title" content="Trivia 50">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180.png">
+  <script type="module" src="/src/entries/trivia.ts"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/"><img src="/icons/icon-192.png" alt="" width="28" height="28">Trivia 50</a>
+      <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="/" aria-current="page">Play</a></li>
+        <li><a href="/how-it-works/">How it works</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/guide/">Guide</a></li>
+        <li><a href="/agents/">Agents</a></li>
+      </ul>
+      </nav>
+      <button id="install-btn" class="btn primary small" type="button" hidden>Install</button>
+    </div>
+  </header>
+  <div class="banner-wrap">
+    <div id="offline-banner" class="banner notice" role="status" hidden><p>You're offline. New questions need a connection.</p></div>
+    <div id="update-banner" class="banner glass" role="status" hidden><p>A new version is ready.</p><button class="btn primary small" type="button">Reload</button></div>
+    <div id="ios-tip" class="banner glass" hidden><p>To install, tap Share, then Add to Home Screen.</p><button class="btn plain small" type="button">Not Now</button></div>
+  </div>
+  <main id="main">
+<div id="app"><section class="screen"><h1>Pick a topic</h1><p class="muted">Loading topics…</p></section></div>
+  </main>
+  <footer class="site-footer">
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="/how-it-works/">How it works</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/guide/">Guide</a></li>
+        <li><a href="/agents/">Agents</a></li>
+        <li><a href="https://github.com/isaacbredy27-cloud/AgentTeam2">GitHub</a></li>
+      </ul>
+    </nav>
+    <p>Questions from the <a href="https://opentdb.com/">Open Trivia Database</a> (opentdb.com), licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
+  </footer>
+  <div id="announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Resources · Trivia 50</title>
+  <meta name="description" content="Every link the project relies on.">
+  <meta name="theme-color" content="#1d4ed8">
+  <meta name="apple-mobile-web-app-title" content="Trivia 50">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180.png">
+  <script type="module" src="/src/entries/page.ts"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/"><img src="/icons/icon-192.png" alt="" width="28" height="28">Trivia 50</a>
+      <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="/">Play</a></li>
+        <li><a href="/how-it-works/">How it works</a></li>
+        <li><a href="/resources/" aria-current="page">Resources</a></li>
+        <li><a href="/guide/">Guide</a></li>
+        <li><a href="/agents/">Agents</a></li>
+      </ul>
+      </nav>
+      <button id="install-btn" class="btn primary small" type="button" hidden>Install</button>
+    </div>
+  </header>
+  <div class="banner-wrap">
+    <div id="offline-banner" class="banner notice" role="status" hidden><p>You're offline. New questions need a connection.</p></div>
+    <div id="update-banner" class="banner glass" role="status" hidden><p>A new version is ready.</p><button class="btn primary small" type="button">Reload</button></div>
+    <div id="ios-tip" class="banner glass" hidden><p>To install, tap Share, then Add to Home Screen.</p><button class="btn plain small" type="button">Not Now</button></div>
+  </div>
+  <main id="main">
+<article class="prose">
+  <h1>Resources</h1>
+  <p class="lead">Every link this project relies on.</p>
+
+  <h2>This project</h2>
+  <ul class="link-list">
+    <li><a href="https://github.com/isaacbredy27-cloud/AgentTeam2">github.com/isaacbredy27-cloud/AgentTeam2</a><span>Source code, docs, agents and decision records.</span></li>
+    <li><a href="/guide/">Setup and deploy guide</a><span>Step by step: Netlify, Supabase, GitHub token and Claude key.</span></li>
+    <li><a href="https://mcp-api.netlify.app/">mcp-api.netlify.app</a><span>Vibe Coding API Directory. It lists Open Trivia DB.</span></li>
+  </ul>
+
+  <h2>Open Trivia DB</h2>
+  <ul class="link-list">
+    <li><a href="https://opentdb.com/api_config.php">opentdb.com/api_config.php</a><span>API docs: categories, amounts, encodings, tokens and response codes.</span></li>
+    <li><a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a><span>The licence for the questions.</span></li>
+  </ul>
+
+  <h2>Installable web apps</h2>
+  <ul class="link-list">
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps">MDN: Progressive web apps</a><span>Overview.</span></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Making_PWAs_installable">MDN: Making PWAs installable</a><span>Install criteria.</span></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest">MDN: Web application manifest</a><span>Manifest fields.</span></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Offline_and_background_operation">MDN: Offline and background operation</a><span>Service workers and caching.</span></li>
+    <li><a href="https://web.dev/learn/pwa/">web.dev: Learn PWA</a><span>Install prompts and update flows.</span></li>
+    <li><a href="https://webkit.org/blog/13878/web-push-for-web-apps-on-ios-and-ipados/">WebKit: Home Screen web apps on iOS</a><span>How iPhone installs work.</span></li>
+    <li><a href="https://webkit.org/blog/16574/webkit-features-in-safari-18-4/">WebKit: Safari 18.4 features</a><span>Declarative Web Push.</span></li>
+    <li><a href="https://capacitorjs.com/">Capacitor</a><span>Native wrapper, only if a store listing is ever needed.</span></li>
+  </ul>
+
+  <h2>Netlify</h2>
+  <ul class="link-list">
+    <li><a href="https://docs.netlify.com/build/functions/overview/">Functions overview</a><span>How functions work.</span></li>
+    <li><a href="https://docs.netlify.com/build/functions/configuration/">Functions configuration</a><span>Limits: 60 seconds, payload sizes.</span></li>
+    <li><a href="https://docs.netlify.com/build/functions/api/">Functions API</a><span>Request, Response, context and streaming.</span></li>
+    <li><a href="https://docs.netlify.com/build/functions/background-functions/">Background functions</a><span>Long jobs up to 15 minutes.</span></li>
+    <li><a href="https://docs.netlify.com/build/functions/environment-variables/">Environment variables for functions</a><span>Scopes and contexts.</span></li>
+    <li><a href="https://docs.netlify.com/build/data-and-storage/netlify-blobs/">Netlify Blobs</a><span>Storage for proposals and the audit log.</span></li>
+    <li><a href="https://docs.netlify.com/manage/security/secure-access-to-sites/rate-limiting/">Rate limiting</a><span>Function rate-limit rules.</span></li>
+    <li><a href="https://docs.netlify.com/manage/routing/headers/">Custom headers</a><span>Security headers and the CSP.</span></li>
+  </ul>
+
+  <h2>Supabase Auth</h2>
+  <ul class="link-list">
+    <li><a href="https://supabase.com/docs/guides/auth">Supabase Auth</a><span>Overview.</span></li>
+    <li><a href="https://supabase.com/docs/guides/auth/social-login/auth-google">Login with Google</a><span>Set up the Google provider.</span></li>
+    <li><a href="https://supabase.com/docs/guides/auth/redirect-urls">Redirect URLs</a><span>Allow your site's URLs.</span></li>
+    <li><a href="https://supabase.com/docs/reference/javascript/auth-getuser">auth.getUser</a><span>How the server checks a token.</span></li>
+    <li><a href="https://supabase.com/docs/guides/database/postgres/custom-claims-and-role-based-access-control-rbac">Roles and custom claims</a><span>Background on role-based access.</span></li>
+  </ul>
+
+  <h2>Claude API</h2>
+  <ul class="link-list">
+    <li><a href="https://platform.claude.com/docs">Claude API docs</a><span>Messages, streaming and tool use.</span></li>
+    <li><a href="https://platform.claude.com/docs/en/about-claude/models/overview">Models overview</a><span>Model IDs and prices.</span></li>
+    <li><a href="https://platform.claude.com/docs/en/build-with-claude/streaming">Streaming</a><span>Event order.</span></li>
+    <li><a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview">Tool use</a><span>How propose_change works.</span></li>
+    <li><a href="https://code.claude.com/docs/en/sub-agents">Claude Code subagents</a><span>The agent file format.</span></li>
+  </ul>
+
+  <h2>GitHub</h2>
+  <ul class="link-list">
+    <li><a href="https://docs.github.com/en/rest/repos/contents">Repository contents API</a><span>Reading files and their SHAs.</span></li>
+    <li><a href="https://docs.github.com/en/rest/git">Git database API</a><span>One commit for many files.</span></li>
+    <li><a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens">Personal access tokens</a><span>Fine-grained token for one repo.</span></li>
+  </ul>
+
+  <h2>Accessibility, security and testing</h2>
+  <ul class="link-list">
+    <li><a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2</a><span>Our target: level AA.</span></li>
+    <li><a href="https://developer.apple.com/design/human-interface-guidelines/">Apple Human Interface Guidelines</a><span>Flows and wording.</span></li>
+    <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html">OWASP DOM XSS prevention</a><span>Why we never use innerHTML with outside text.</span></li>
+    <li><a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/">OWASP LLM01: Prompt injection</a><span>Why a human approves every change.</span></li>
+    <li><a href="https://playwright.dev/docs/intro">Playwright</a><span>Browser tests.</span></li>
+    <li><a href="https://vitest.dev/guide/">Vitest</a><span>Unit and function tests.</span></li>
+    <li><a href="https://vite.dev/guide/">Vite</a><span>The build tool.</span></li>
+  </ul>
+</article>
+  </main>
+  <footer class="site-footer">
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="/how-it-works/">How it works</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/guide/">Guide</a></li>
+        <li><a href="/agents/">Agents</a></li>
+        <li><a href="https://github.com/isaacbredy27-cloud/AgentTeam2">GitHub</a></li>
+      </ul>
+    </nav>
+    <p>Questions from the <a href="https://opentdb.com/">Open Trivia Database</a> (opentdb.com), licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
+  </footer>
+  <div id="announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

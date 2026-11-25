@@ -1,0 +1,37 @@
+{
+  "name": "trivia-50",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Trivia 50: an installable trivia PWA with an Agent Console, on Netlify.",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "icons": "node scripts/make-icons.mjs",
+    "build": "vite build && node scripts/build-sw.mjs",
+    "preview:local": "node scripts/local-harness.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "test:e2e": "playwright test --trace off",
+    "check:secrets": "node scripts/check-dist-secrets.mjs",
+    "verify": "npm run typecheck && npm test && npm run build && npm run check:secrets && npm run test:e2e"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "1.14.0",
+    "@netlify/blobs": "11.1.11",
+    "@supabase/supabase-js": "2.119.2"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.1",
+    "@netlify/functions": "6.1.2",
+    "@playwright/test": "1.63.0",
+    "@types/node": "22.19.1",
+    "typescript": "7.0.2",
+    "vite": "8.3.8",
+    "vitest": "5.1.2"
+  },
+  "overrides": {
+    "playwright-core": "1.63.0"
+  }
+}

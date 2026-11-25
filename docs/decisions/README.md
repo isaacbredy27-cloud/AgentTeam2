@@ -9,3 +9,4 @@ One file per decision. Never edit an accepted decision. Supersede it with a new 
 | [0003](0003-approve-commits-to-main.md) | Approve commits straight to `main` | Accepted | 2026-11-25 |
 | [0004](0004-netlify-free-plan.md) | Stay on the Netlify Free plan for now | Accepted | 2026-11-25 |
 | [0005](0005-fine-grained-pat.md) | Use a fine-grained personal access token for GitHub | Accepted | 2026-11-25 |
+| [0006](0006-supabase-auth-for-agent-console.md) | Supabase Auth with a `super_admin` role gates the Agent Console. Supersedes the password gate in doc 04 | Accepted | 2026-11-25 |

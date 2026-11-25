@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>How it works · Trivia 50</title>
+  <meta name="description" content="How the trivia app and the Agent Console work.">
+  <meta name="theme-color" content="#1d4ed8">
+  <meta name="apple-mobile-web-app-title" content="Trivia 50">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180.png">
+  <script type="module" src="/src/entries/page.ts"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/"><img src="/icons/icon-192.png" alt="" width="28" height="28">Trivia 50</a>
+      <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="/">Play</a></li>
+        <li><a href="/how-it-works/" aria-current="page">How it works</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/guide/">Guide</a></li>
+        <li><a href="/agents/">Agents</a></li>
+      </ul>
+      </nav>
+      <button id="install-btn" class="btn primary small" type="button" hidden>Install</button>
+    </div>
+  </header>
+  <div class="banner-wrap">
+    <div id="offline-banner" class="banner notice" role="status" hidden><p>You're offline. New questions need a connection.</p></div>
+    <div id="update-banner" class="banner glass" role="status" hidden><p>A new version is ready.</p><button class="btn primary small" type="button">Reload</button></div>
+    <div id="ios-tip" class="banner glass" hidden><p>To install, tap Share, then Add to Home Screen.</p><button class="btn plain small" type="button">Not Now</button></div>
+  </div>
+  <main id="main">
+<article class="prose">
+  <h1>How it works</h1>
+  <p class="lead">Trivia 50 is a web app you can install on your phone. A team of AI agents helps build it, and a person approves every change.</p>
+
+  <h2>Playing a round</h2>
+  <ol>
+    <li>You pick a topic. The topic list comes from Open Trivia DB and is saved for a day.</li>
+    <li>Your browser asks Open Trivia DB for up to 50 questions. No server of ours sits in between.</li>
+    <li>Multiple-choice answers are shuffled fairly. True or False always shows True first.</li>
+    <li>Each correct answer scores 1 point. Your streak grows with each correct answer in a row.</li>
+    <li>At the end you see your score, a review of every question, and your best streak.</li>
+    <li>Scores stay on this device only. Nothing is sent anywhere.</li>
+  </ol>
+  <p>Open Trivia DB allows 1 request every 5 seconds. If it is busy, the app waits and tries again.</p>
+
+  <h2>Installing and offline use</h2>
+  <ul>
+    <li>On Android, tap <strong>Install</strong> in the header, or use the browser menu.</li>
+    <li>On iPhone, tap <strong>Share</strong>, then <strong>Add to Home Screen</strong>.</li>
+    <li>A service worker saves the app, so it opens without a connection. New questions still need one.</li>
+  </ul>
+
+  <h2>The Agent Console</h2>
+  <p>The Agents page lists the 12 agents that build this app. Each has a name, a model and its own reference notes.</p>
+  <ol>
+    <li>An admin signs in with Supabase: email and password, or Google.</li>
+    <li>Only accounts with the <code>super_admin</code> role can open the console. The server checks this on every request.</li>
+    <li>The admin chats with an agent. A Netlify Function sends the chat to Claude with that agent's own instructions and notes.</li>
+    <li>An agent can propose a code change. The console shows the full diff.</li>
+    <li>Nothing is written until the admin clicks <strong>Approve</strong> and confirms.</li>
+    <li>Approve makes one commit to <code>main</code> on GitHub. Netlify sees the commit and deploys the new version.</li>
+  </ol>
+
+  <h2>Safety rules</h2>
+  <ul>
+    <li>API keys live only in Netlify Functions. Your browser never sees them.</li>
+    <li>Agents cannot change server code, settings, agent files, dependencies or the service worker.</li>
+    <li>A proposal goes stale if the files changed after it was made. A second Approve on the same proposal is blocked.</li>
+  </ul>
+
+  <h2>Where things run</h2>
+  <table tabindex="0">
+    <thead><tr><th>Part</th><th>Runs on</th></tr></thead>
+    <tbody>
+      <tr><td>App pages and service worker</td><td>Netlify CDN</td></tr>
+      <tr><td>Trivia questions</td><td>Open Trivia DB, called from your browser</td></tr>
+      <tr><td>Sign-in</td><td>Supabase Auth</td></tr>
+      <tr><td>Agent chat and commits</td><td>Netlify Functions, calling Claude and GitHub</td></tr>
+      <tr><td>Proposals and audit log</td><td>Netlify Blobs</td></tr>
+    </tbody>
+  </table>
+</article>
+  </main>
+  <footer class="site-footer">
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="/how-it-works/">How it works</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/guide/">Guide</a></li>
+        <li><a href="/agents/">Agents</a></li>
+        <li><a href="https://github.com/isaacbredy27-cloud/AgentTeam2">GitHub</a></li>
+      </ul>
+    </nav>
+    <p>Questions from the <a href="https://opentdb.com/">Open Trivia Database</a> (opentdb.com), licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
+  </footer>
+  <div id="announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

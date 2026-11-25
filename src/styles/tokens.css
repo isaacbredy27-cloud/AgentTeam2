@@ -1,0 +1,63 @@
+/* Design tokens (Sable). Text pairs are checked for WCAG AA in tests/unit/contrast.test.ts. */
+:root {
+  color-scheme: light dark;
+  --color-bg: #eef1f7;
+  --color-bg-2: #e3e8f4;
+  --color-surface: #ffffff;
+  --color-text: #111318;
+  --color-text-secondary: #4a5060;
+  --color-accent: #1d4ed8;
+  --color-accent-hover: #1e40af;
+  --color-on-accent: #ffffff;
+  --color-correct: #166534;
+  --color-correct-bg: #dcfce7;
+  --color-wrong: #b91c1c;
+  --color-wrong-bg: #fee2e2;
+  --color-notice-bg: #fef3c7;
+  --color-notice-text: #78350f;
+  --color-border: rgb(17 19 24 / 0.12);
+  --color-focus: #1d4ed8;
+
+  --glass-fill: rgb(255 255 255 / 0.72);
+  --glass-border: rgb(255 255 255 / 0.65);
+  --glass-shadow: 0 8px 32px rgb(15 23 42 / 0.12);
+  --glass-blur: 20px;
+  --glass-saturate: 180%;
+
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 24px; --space-6: 32px;
+  --radius-outer: 24px;
+  --radius-inner: calc(var(--radius-outer) - var(--space-3));
+  --radius-pill: 999px;
+
+  --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-body: 17px;
+  --font-small: 15px;
+  --font-title: clamp(26px, 6vw, 34px);
+  --target-min: 44px;
+  --max-width: 720px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0b0d12;
+    --color-bg-2: #111827;
+    --color-surface: #161a22;
+    --color-text: #f2f4f8;
+    --color-text-secondary: #b4bccb;
+    --color-accent: #8ab4ff;
+    --color-accent-hover: #a9c7ff;
+    --color-on-accent: #0b0d12;
+    --color-correct: #4ade80;
+    --color-correct-bg: #052e16;
+    --color-wrong: #f87171;
+    --color-wrong-bg: #450a0a;
+    --color-notice-bg: #422006;
+    --color-notice-text: #fde68a;
+    --color-border: rgb(255 255 255 / 0.14);
+    --color-focus: #8ab4ff;
+    --glass-fill: rgb(22 26 34 / 0.72);
+    --glass-border: rgb(255 255 255 / 0.12);
+    --glass-shadow: 0 8px 32px rgb(0 0 0 / 0.4);
+  }
+}

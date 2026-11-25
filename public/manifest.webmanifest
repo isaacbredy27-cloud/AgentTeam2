@@ -1,0 +1,18 @@
+{
+  "id": "/",
+  "name": "Trivia 50",
+  "short_name": "Trivia",
+  "description": "Pick a topic and answer up to 50 trivia questions.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#eef1f7",
+  "theme_color": "#1d4ed8",
+  "categories": ["games", "education"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

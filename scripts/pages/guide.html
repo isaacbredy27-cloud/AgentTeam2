@@ -1,0 +1,101 @@
+<article class="prose">
+  <h1>Setup and deploy guide</h1>
+  <p class="lead">Follow these steps to run Trivia 50 on your own Netlify site. Allow about 45 minutes.</p>
+
+  <h2 id="before">1. Before you start</h2>
+  <ul>
+    <li>A GitHub account with a copy of the repo: <a href="https://github.com/isaacbredy27-cloud/AgentTeam2">isaacbredy27-cloud/AgentTeam2</a>.</li>
+    <li>A free <a href="https://app.netlify.com/">Netlify</a> account.</li>
+    <li>A free <a href="https://supabase.com/dashboard">Supabase</a> account.</li>
+    <li>A Claude API key from the <a href="https://platform.claude.com/">Claude Console</a>.</li>
+    <li>Node.js 22 or newer, if you want to run it on your computer.</li>
+  </ul>
+  <p>The trivia game works without any of the keys. The keys are only for the Agents page.</p>
+
+  <h2 id="local">2. Run it on your computer</h2>
+  <pre tabindex="0"><code>npm install
+npm run build
+npm run preview:local</code></pre>
+  <p>Open <code>http://127.0.0.1:8888</code>. This local server uses fake sign-in, fake Claude and fake GitHub. Sign in on the Agents page as <code>admin@example.test</code> with password <code>admin-pass</code>.</p>
+  <p>To test against real services, use the Netlify CLI with a git-ignored <code>.env</code> file:</p>
+  <pre tabindex="0"><code>npx netlify-cli dev</code></pre>
+
+  <h2 id="supabase">3. Set up Supabase sign-in</h2>
+  <ol>
+    <li>Create a Supabase project. Copy the <strong>Project URL</strong> and the <strong>anon public</strong> key from Project Settings, API. Both are public values.</li>
+    <li>Go to Authentication, Sign In / Providers. Keep <strong>Email</strong> on.</li>
+    <li>Optional but advised: turn off <strong>Allow new users to sign up</strong>. Add admins by invite instead.</li>
+    <li>Go to Authentication, URL Configuration. Set <strong>Site URL</strong> to your Netlify URL, for example <code>https://your-site.netlify.app</code>.</li>
+    <li>Add these <strong>Redirect URLs</strong>: <code>https://your-site.netlify.app/agents/</code> and, for local work, <code>http://localhost:8888/agents/</code>.</li>
+  </ol>
+
+  <h3 id="google">Turn on Continue with Google</h3>
+  <ol>
+    <li>In Google Cloud Console, open APIs and Services, Credentials. Create an <strong>OAuth client ID</strong> of type <strong>Web application</strong>.</li>
+    <li>Under Authorized JavaScript origins, add your Netlify URL.</li>
+    <li>Under Authorized redirect URIs, add <code>https://&lt;project-ref&gt;.supabase.co/auth/v1/callback</code>. Supabase shows this exact URL on its Google provider page.</li>
+    <li>Copy the client ID and secret into Supabase, Authentication, Sign In / Providers, Google. Save.</li>
+  </ol>
+
+  <h3 id="admin">Make someone a super_admin</h3>
+  <p>The role lives in <code>app_metadata</code>. Users cannot change it themselves. Run this in the Supabase SQL Editor after the person has signed in once:</p>
+  <pre tabindex="0"><code>update auth.users
+set raw_app_meta_data = coalesce(raw_app_meta_data, '{}'::jsonb)
+                        || '{"role":"super_admin"}'::jsonb
+where email = 'admin@your-domain.com';</code></pre>
+  <p>To remove the role:</p>
+  <pre tabindex="0"><code>update auth.users
+set raw_app_meta_data = raw_app_meta_data - 'role'
+where email = 'admin@your-domain.com';</code></pre>
+  <p>The server checks the role on every request, so the change applies at once.</p>
+
+  <h2 id="github">4. Create the GitHub token</h2>
+  <ol>
+    <li>Open GitHub, Settings, Developer settings, Personal access tokens, <strong>Fine-grained tokens</strong>.</li>
+    <li>Resource owner: the account that owns the repo. Repository access: <strong>Only select repositories</strong>, then pick this repo.</li>
+    <li>Permissions: <strong>Contents: Read and write</strong>. Nothing else. Metadata read comes with it.</li>
+    <li>Expiration: 90 days or less. Put a reminder in your calendar to renew it.</li>
+  </ol>
+
+  <h2 id="claude">5. Get the Claude API key</h2>
+  <ol>
+    <li>Create a key in the Claude Console.</li>
+    <li>Set a monthly spend limit there. Each chat turn uses the agent's own model.</li>
+  </ol>
+
+  <h2 id="netlify">6. Deploy on Netlify</h2>
+  <ol>
+    <li>In Netlify, choose <strong>Add new project</strong>, then <strong>Import an existing project</strong>, then pick the repo.</li>
+    <li>Netlify reads <code>netlify.toml</code>. Build command: <code>npm run build</code>. Publish directory: <code>dist</code>.</li>
+    <li>Open Project configuration, Environment variables. Add the variables below.</li>
+    <li>Deploy. Every push to <code>main</code> deploys again, including commits from Approve.</li>
+  </ol>
+  <table tabindex="0">
+    <thead><tr><th>Name</th><th>Scope</th><th>Context</th><th>Type</th></tr></thead>
+    <tbody>
+      <tr><td><code>SUPABASE_URL</code></td><td>Functions</td><td>All</td><td>Public</td></tr>
+      <tr><td><code>SUPABASE_ANON_KEY</code></td><td>Functions</td><td>All</td><td>Public</td></tr>
+      <tr><td><code>ANTHROPIC_API_KEY</code></td><td>Functions</td><td>Production only</td><td>Secret</td></tr>
+      <tr><td><code>GITHUB_TOKEN</code></td><td>Functions</td><td>Production only</td><td>Secret</td></tr>
+      <tr><td><code>GITHUB_OWNER</code></td><td>Functions</td><td>All</td><td>Public</td></tr>
+      <tr><td><code>GITHUB_REPO</code></td><td>Functions</td><td>All</td><td>Public</td></tr>
+      <tr><td><code>GITHUB_BRANCH</code></td><td>Functions</td><td>All</td><td>Public, default <code>main</code></td></tr>
+    </tbody>
+  </table>
+  <p>Mark the two secrets as secret in Netlify. Deploy Previews then cannot spend money or push commits.</p>
+
+  <h2 id="check">7. Check the deploy</h2>
+  <ol>
+    <li>Open the site on your phone. Pick a topic and answer one question.</li>
+    <li>Install it. On Android tap Install. On iPhone tap Share, then Add to Home Screen.</li>
+    <li>Open the Agents page. Sign in as your super_admin. Check the agent list loads.</li>
+    <li>Sign in as a normal user. Check the console stays hidden.</li>
+    <li>Watch the function logs in Netlify after the first chat.</li>
+  </ol>
+
+  <h2 id="rollback">8. If a deploy breaks</h2>
+  <ol>
+    <li>In Netlify, open Deploys. Pick the last good deploy and click <strong>Publish deploy</strong>.</li>
+    <li>Then fix forward: revert the bad commit on GitHub and push.</li>
+  </ol>
+</article>

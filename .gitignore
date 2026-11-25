@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.netlify/
+.env
+.env.*
+test-results/
+playwright-report/
+knowledge/node_modules/
+knowledge/test-results/

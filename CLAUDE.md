@@ -13,6 +13,7 @@ Records: `docs/decisions/`.
 3. Approve in the Agent Console commits straight to `main`.
 4. Netlify Free plan for now.
 5. GitHub access uses a fine-grained personal access token, this repo only.
+6. Supabase Auth gates the Agent Console. Only `super_admin` (in `app_metadata`) may use it. Replaces the password gate.
 
 ## The team
 
@@ -96,6 +97,7 @@ cd knowledge && npm install && npm run verify
 | `docs/04-agent-console.md` | Agent Console and security |
 | `docs/05-testing-accessibility.md` | Tests and accessibility |
 | `docs/expert-roster.md` | Team, skills, reviewers |
+| `docs/plans/` | Wave 1 build plans |
 | `docs/decisions/` | Decision records |
 
 ## Changing the team

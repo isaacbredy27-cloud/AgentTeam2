@@ -135,6 +135,10 @@ Background functions:
 
 ## 6. Planned functions
 
+> **Built 2026-11-25** (decision 0006): `/api/config`, `/api/me`, `/api/agents`, `/api/chat`, `/api/proposals/:id`,
+> `/api/proposals/:id/approve`, `/api/proposals/:id/reject`. No login, logout or jobs functions. Rate limits sit on chat and approve.
+> Shared code lives in `netlify/lib/`. See [plans/architecture.md](plans/architecture.md).
+
 | Path | Method | Type | Job |
 | --- | --- | --- | --- |
 | `/api/login` | POST | sync | Check password. Set session cookie. |
@@ -151,6 +155,9 @@ Background functions:
 All `/api/*` routes except `/api/login` check the session first.
 
 ## 7. Environment variables
+
+> **Update 2026-11-25** (decision 0006): `CONSOLE_PASSWORD_HASH`, `SESSION_SECRET` and `WORKER_SECRET` are not used.
+> Add `SUPABASE_URL` and `SUPABASE_ANON_KEY` (public, Functions scope, all contexts). The full table is in the root `README.md`.
 
 | Name | Used by | Notes |
 | --- | --- | --- |

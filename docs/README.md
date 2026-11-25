@@ -24,6 +24,7 @@ Research date: 2026-11-25. Each file lists the official sources it used.
 | 04 | [04-agent-console.md](04-agent-console.md) | Agent list, chat via Claude API, propose and approve flow, security, long jobs |
 | 05 | [05-testing-accessibility.md](05-testing-accessibility.md) | Test layers, security tests, Playwright, WCAG 2.2 AA checklist |
 | — | [expert-roster.md](expert-roster.md) | The 12-agent team, job lines, shared skills and review owners |
+| — | [plans/](plans/README.md) | Wave 1 build plans: architecture, Open Trivia DB client, security, PWA |
 | — | [decisions/](decisions/README.md) | Decision records |
 | — | [agent-brains.md](agent-brains.md) | Each agent's model, name and personality |
 | — | [../knowledge/](../knowledge/README.md) | Per-agent reference notes and runnable worked examples |
@@ -68,11 +69,12 @@ Full records live in [decisions/](decisions/README.md).
 - **0003** Approve commits straight to `main`. No pull request.
 - **0004** Netlify Free plan for now.
 - **0005** Fine-grained personal access token for GitHub.
+- **0006** Supabase Auth with a `super_admin` role gates the Agent Console. Replaces the password gate.
 
 ## Open questions for the team
 
-- Does Open Trivia DB send CORS headers? Check in the first spike (doc 01, section 9).
-  With no proxy (decision 0002), a CORS failure goes back to the lead.
+- Does Open Trivia DB send CORS headers? Still unconfirmed: opentdb.com was unreachable from the build container on 2026-11-25.
+  Check on the first live deploy. With no proxy (decision 0002), a CORS failure goes back to the lead.
 - Final app name, colours and icons.
 - Should scores sync across devices? v1 keeps them on the device only.
 
